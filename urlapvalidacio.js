@@ -28,6 +28,7 @@ function validalas () {
     var email2;
     var telefon;
     var web;
+    var uzenet;
 
     
 
@@ -42,13 +43,16 @@ function validalas () {
     $("aside section:nth-child(1) p")[0].innerHTML=hiba;
     $("aside section:nth-child(2) p")[0].innerHTML=adat;
 
-    if (email.lenght || email2.lenght <2) {
+    if (email.lenght<2 || email2.lenght <2) {
         hiba+="Az emil nem megfelelő! (Túl rövid)";
         ID("nev").style.border="2px solid red";
     }else if (email!=email2) {
         hiba+="A két email cím nem egyezik meg!";
         ID("nev").style.border="2px solid red";
-    }else{
+    }else if (email.lenght>30 || email2.lenght>30){
+        hiba+="A megadott email cím túl hosszú!"
+        ID("nev").style.border="2px solid red";
+    }else {
         ID("nev").style.border="2px solid green";
     }
 
@@ -80,5 +84,16 @@ function validalas () {
     }else{
         ID("nev").style.border="2px solid green";
     }
+
+    if(uzenet.lenght>300) {
+        hiba+="A megadott üzenet túl hosszú<br></br>"+"Kérem fogalmazza meg üzenetét rövidebben!";
+        ID("nev").style.border="2px solid red";
+    }else if (uzenet.lenght<1){
+        hiba+="Kérem adjon meg egy üzenetet!";
+        ID("nev").style.border="2px solid red";
+    }else{
+        ID("nev").style.border="2px solid green";
+    }
+
 }
 }
